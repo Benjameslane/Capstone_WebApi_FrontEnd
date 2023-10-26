@@ -5,7 +5,7 @@ import useCustomForm from "../../hooks/useCustomForm";
 const RegisterPage = () => {
   const { registerUser } = useContext(AuthContext);
   const defaultValues = {
-    username: "",
+    userName: "",
     email: "",
     password: "",
     firstName: "",
@@ -21,11 +21,11 @@ const RegisterPage = () => {
   return (
     <div className="container">
       <form className="form" onSubmit={handleSubmit}>
-        <label>
+        <label>_
           Username:{" "}
           <input
             type="text"
-            name="username"
+            name="userName"
             value={formData.username}
             onChange={handleInputChange}
           />

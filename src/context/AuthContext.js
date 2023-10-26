@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
   const registerUser = async (registerData) => {
     try {
       let finalData = {
-        userName: registerData.username,
+        userName: registerData.userName,
         password: registerData.password,
         email: registerData.email,
         firstName: registerData.firstName,
@@ -38,17 +38,20 @@ export const AuthProvider = ({ children }) => {
         userType: registerData.userType
       };
       let response = await axios.post(`${BASE_URL}`, finalData);
-      if (response.status === 201) {
-        console.log("Successful registration! Log in to access token");
-        setIsServerError(false);
-        navigate("/login");
-      } else {
-        navigate("/register");
-      }
-    } catch (error) {
-      console.log(error);
+    if (response.status === 201) {
+      console.log("Successful registration! Log in to access token");
+      setIsServerError(false);
+      navigate("/login");
+    } else {
+      console.error("Unexpected response status:", response.status);
+      navigate("/register");
     }
-  };
+  } catch (error) {
+    console.error("Error during registration:", error.response ? error.response.data : error.message);
+    setIsServerError(true);
+    navigate("/register");
+  }
+};
 
   const loginUser = async (loginData) => {
     try {
