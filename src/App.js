@@ -1,7 +1,6 @@
-// General Imports
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-
+import FoodShelterList from "./components/FoodShelterList"; 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -29,6 +28,7 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/food-shelters" element={<FoodShelterList />} />
       </Routes>
       <Footer />
     </div>
