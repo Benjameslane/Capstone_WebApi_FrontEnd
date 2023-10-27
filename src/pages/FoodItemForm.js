@@ -1,6 +1,6 @@
-// components/FoodItemForm.js
-import React, { useState } from 'react';
-import { foodItemService } from '../Services/FoodItemService'
+import React, { useState, useContext } from 'react';
+import addFoodItem from '../Services/FoodItemService';
+import AuthContext from '../context/AuthContext';
 
 const FoodItemForm = () => {
   const [foodItem, setFoodItem] = useState({
@@ -10,6 +10,8 @@ const FoodItemForm = () => {
     category: ''
   });
 
+  const { token } = useContext(AuthContext);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFoodItem({ ...foodItem, [name]: value });
@@ -18,9 +20,8 @@ const FoodItemForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await foodItemService.addFoodItem(foodItem);
+      await addFoodItem(foodItem, token);
       alert('Food item added successfully!');
-      
     } catch (error) {
       alert('Failed to add food item');
     }

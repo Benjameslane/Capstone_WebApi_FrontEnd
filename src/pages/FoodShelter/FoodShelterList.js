@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { getNearestFoodShelters } from '../api';
+import { getNearestFoodShelters } from '../../api';
+import"./FoodShelterList.css";
 
 const FoodShelterList = () => {
   const [latitude, setLatitude] = useState('');

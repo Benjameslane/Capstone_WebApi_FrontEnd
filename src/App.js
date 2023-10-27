@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import FoodShelterList from "./pages/FoodShelterList"; 
+import FoodShelterList from "./pages/FoodShelter/FoodShelterList"; 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
